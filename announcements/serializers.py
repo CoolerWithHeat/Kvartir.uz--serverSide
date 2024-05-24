@@ -41,4 +41,4 @@ class ReiltorNumberSerializer(serializers.ModelSerializer):
 class ClientNumbersSerializer(serializers.ModelSerializer):
     class Meta:
         model = client_numbers
-        fields = ['number']
+        fields = ['id', 'number']

@@ -14,7 +14,8 @@ SECRET_KEY = 'django-insecure-2w@6(b7i05mzi2oy+$5kxk-jni_99q2i#be+da759&pem1^2+@
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['*', 'kvartir.uz', 'www.kvartir.uz']
+# ALLOWED_HOSTS = ['kvartir.uz', 'www.kvartir.uz']
+ALLOWED_HOSTS = ['*',]
 
 
 
@@ -87,13 +88,15 @@ DATABASES = {
     }
 }
 
-CORS_ALLOWED_ORIGINS = [
-    'http://192.168.1.102:81/'
-    "http://51.20.133.119",
-    "https://kvartir.uz",
-    "http://www.kvartir.uz/",
-    "https://www.kvartir.uz/",
-]
+# CORS_ALLOWED_ORIGINS = [
+#     'http://192.168.1.102:81',
+#     "http://51.20.133.119",
+#     "https://kvartir.uz",
+#     "http://www.kvartir.uz",
+#     "https://www.kvartir.uz",
+# ]
+
+CORS_ALLOW_ALL_ORIGINS = True
 
 
 # Password validation
