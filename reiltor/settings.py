@@ -96,7 +96,12 @@ DATABASES = {
 #     "https://www.kvartir.uz",
 # ]
 
-CORS_ALLOW_ALL_ORIGINS = True
+CORS_ALLOWED_ORIGINS = [
+    'https://kvartir.uz',
+    "https://www.kvartir.uz",
+]
+
+
 
 
 # Password validation

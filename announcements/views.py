@@ -134,6 +134,8 @@ class GetAnnouncementInDetail(APIView):
             return Response(None, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
         
 class AnnouncementCreateView(generics.CreateAPIView):
+    authentication_classes = [TokenAuthentication]
+    permission_classes = [IsAuthenticated]
     queryset = Announcement.objects.all()
     serializer_class = AnnouncementSerializer
     def post(self, request, *args, **kwargs):
@@ -160,7 +162,14 @@ class AnnouncementCreateView(generics.CreateAPIView):
         kitchen_size = request.data.get('kitchen_size')
         square_meters = request.data.get('square_meters')
         updated_instance = None
-        if json.loads(id):
+
+        prepared_floor = floor.objects.get_or_create(
+            building_total_floor=building_total_floor,
+            apartment_floor=apartment_floor,
+            apartment_room_count=apartment_room_count
+        )
+
+        if id:
             announcement_instance = Announcement.objects.get(id=id)
             updated_instance = announcement_instance
             announcement_instance.price = price
@@ -202,7 +211,7 @@ class AnnouncementCreateView(generics.CreateAPIView):
                 kitchen_size=kitchen_size,
                 room_count=room_count,
                 construction_material=construction_material,
-                kvartal=kvartal,
+                kvartal=3,
                 landmark=landmark,
                 room_layout=room_layout,
                 mortgage_deal_possible=json.loads(mortgage_deal_possible),
